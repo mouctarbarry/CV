@@ -25,7 +25,7 @@ section .heading{
     margin: 0 auto 20px;
 }
 .divider.white{
-    background-color: blueviolet;
+    background-color: white;
 }
 section .heading h2{
     text-transform: uppercase;
@@ -34,6 +34,29 @@ section .heading h2{
 
 ul{
     list-style: none;
+}
+
+
+/* NAVBAR */
+.navbar {
+    background-color: blueviolet;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid white;
+}
+.navbar-nav {
+    margin: 0 auto;
+    text-align: center;
+}
+.nav-link {
+    color: white !important;
+    margin: 0 6px;
+}
+.nav-link.active,
+.nav-link:hover {
+    background-color: white;
+    color: #d82c2e !important;
 }
 
 
@@ -56,6 +79,9 @@ ul{
 }
 
 /* SKILLS */
+#skills{
+    background-color: azure;
+}
 
 #skills .progress{
     height: 45px;
@@ -76,10 +102,10 @@ ul{
 
 /* EXPERIENCE */
 #experience{
-    background-color: beige;
+    background: linear-gradient(to left, cornflowerblue, aqua) ;
 }
 #experience .heading h2{
-    color: blueviolet;
+    color: white;
 }
 .timeline{
     padding: 30px 10px;
@@ -169,7 +195,11 @@ ul{
     color: blueviolet;
 }
 
-/* EXPERIENCE */
+/* EDUCATION */
+
+#education{
+    background-color: azure;
+}
 #education .heading{
     //color: red;
     margin: 15px 0;
@@ -201,12 +231,16 @@ ul{
     font-weight: normal;
 }
 
-/* EXPERIENCE */
+/* PORTFOLIO */
 #portfolio{
     background:linear-gradient(to left, cornflowerblue, aqua);
 }
+
 #portfolio .heading h2 {
     color: white;
+}
+#portfolio .divider{
+    background-color: white;
 }
 #portfolio img {
     width: 100%;
