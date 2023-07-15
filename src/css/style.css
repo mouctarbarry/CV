@@ -6,6 +6,7 @@ body {
 h1, h2, h3, h4, h5,h6{
     font-weight: bold;
 }
+
 img{
     max-width: 100%;
     height: auto;
@@ -162,9 +163,10 @@ ul{
 .timeline-heading h3 {
     margin-top: 5px;
     font-size: 20px;
+    text-transform: uppercase;
 }
 .timeline-heading h4 {
-    color: #d82c2e;
+    color: blueviolet;
 }
 
 
