@@ -21,7 +21,7 @@ section .heading{
 .divider{
     width: 100px;
     height: 2px;
-    background-color: chocolate;
+    background-color: black;
     margin: 0 auto 20px;
 }
 .divider.white{
@@ -37,9 +37,9 @@ ul{
 }
 
 
-/* ABOUT */
+/* ABOUT To be continued */
 #about{
-    background-color: beige;
+    background: linear-gradient(to left, cornflowerblue, aqua) ;
 }
 .profile-picture{
     text-align: center;
@@ -169,7 +169,88 @@ ul{
     color: blueviolet;
 }
 
+/* EXPERIENCE */
+#education .heading{
+    //color: red;
+    margin: 15px 0;
+}
 
+.education-block {
+    width:90%;
+    text-align: center;
+    padding: 30px;
+    background: #e9ecef;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 0 auto 20px;
+}
+.education-block h5 {
+    color: #888;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.education-block span {
+    font-size: 35px;
+}
+.education-block h3 {
+    color: blueviolet;
+    margin: 15px 0;
+}
+.education-block h4 {
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+/* EXPERIENCE */
+#portfolio{
+    background:linear-gradient(to left, cornflowerblue, aqua);
+}
+#portfolio .heading h2 {
+    color: white;
+}
+#portfolio img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+#portfolio img:hover {
+    filter: none;
+    -webkit-filter: none;
+}
+#portfolio .col-md-4 {
+    margin-bottom: 20px;
+}
+
+/* RECOMMENDATIONS */
+#recommendations .heading h2 {
+    color: #d82c2e;
+}
+#myCarousel .carousel-item {
+    padding: 30px 30px 90px;
+}
+#myCarousel .carousel-item h3 {
+    color: #d82c2e;
+    font-style: italic;
+}
+
+/* FOOTER */
+footer {
+    background-color: #333;
+    padding: 20px 0 40px;
+}
+footer span {
+    color: #d82c2e;
+    font-size: 25px;
+    line-height: 35px;
+}
+footer span:hover {
+    font-size: 27px;
+}
+footer h5 {
+    color: white;
+    font-weight: normal;
+}
 
 
 
