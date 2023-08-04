@@ -32,6 +32,7 @@ section .heading h2{
     padding-bottom: 40px;
 }
 
+
 ul{
     list-style: none;
 }
@@ -286,6 +287,14 @@ footer h5 {
     font-weight: normal;
 }
 
+.progress-bar{
+    height:50px;
+}
+
+.progress-bar span{
+    font-weight: normal;
+    font-size: 15px;
+}
 
 
 
