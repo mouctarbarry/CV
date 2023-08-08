@@ -40,8 +40,8 @@ ul{
 
 /* NAVBAR */
 .navbar {
-    background-color: blueviolet;
-    letter-spacing: 3px;
+    background-color: #333333;
+    letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: bold;
     border-bottom: 1px solid white;
@@ -52,36 +52,41 @@ ul{
 }
 .nav-link {
     color: white !important;
-    margin: 0 6px;
+    margin: 0 15px;
+    border-radius: 15px;
 }
 .nav-link.active,
 .nav-link:hover {
     background-color: white;
-    color: #d82c2e !important;
+    color: dimgray !important;
 }
 
 
 /* ABOUT To be continued */
 #about{
-    background: linear-gradient(to left, cornflowerblue, aqua) ;
+    background: radial-gradient(#333333, darkslategray) ;
 }
 .profile-picture{
     text-align: center;
     margin: 0 auto 30px;
 }
 
-#about .heading h1{
-    /*color: blueviolet;*/
-    text-transform: uppercase;
+#about .heading h1,
+#about .heading h3 {
+    color: #e9ecef;
     margin-bottom: 20px;
 }
-#about .heading h3{
-
+#about .heading a{
+    color: #e9ecef;
 }
 
 /* SKILLS */
 #skills{
-    background-color: azure;
+    background-color: aliceblue;
+}
+#skills h2,
+#skills h3{
+    color: black;
 }
 
 #skills .progress{
@@ -93,7 +98,7 @@ ul{
 }
 
 #skills .progress-bar{
-    background-color: blueviolet;
+    background-color: darkslategray;
 }
 #skills .progress-bar h5{
     text-shadow: 1px 1px 1px black;
@@ -103,7 +108,7 @@ ul{
 
 /* EXPERIENCE */
 #experience{
-    background: linear-gradient(to left, cornflowerblue, aqua) ;
+    background: linear-gradient(to left, #333333, darkslategray) ;
 }
 #experience .heading h2{
     color: white;
@@ -135,7 +140,7 @@ ul{
    clear: both;
 }
 .timeline li .timeline-badge {
-    color: blueviolet;
+    color: darkslategray;
     width: 50px;
     line-height: 50px;
     font-size: 20px;
@@ -193,7 +198,7 @@ ul{
     text-transform: uppercase;
 }
 .timeline-heading h4 {
-    color: blueviolet;
+    color: darkslategray;
 }
 
 /* EDUCATION */
@@ -224,7 +229,7 @@ ul{
     font-size: 35px;
 }
 .education-block h3 {
-    color: blueviolet;
+    color:  #63003C;
     margin: 15px 0;
 }
 .education-block h4 {
@@ -234,7 +239,7 @@ ul{
 
 /* PORTFOLIO */
 #portfolio{
-    background:linear-gradient(to left, cornflowerblue, aqua);
+    background: linear-gradient(to left, #333333, darkslategray) ;
 }
 
 #portfolio .heading h2 {
@@ -258,16 +263,7 @@ ul{
 }
 
 /* RECOMMENDATIONS */
-#recommendations .heading h2 {
-    color: #d82c2e;
-}
-#myCarousel .carousel-item {
-    padding: 30px 30px 90px;
-}
-#myCarousel .carousel-item h3 {
-    color: #d82c2e;
-    font-style: italic;
-}
+
 
 /* FOOTER */
 footer {
@@ -275,7 +271,7 @@ footer {
     padding: 20px 0 40px;
 }
 footer span {
-    color: #d82c2e;
+    color: darkgreen;
     font-size: 25px;
     line-height: 35px;
 }
@@ -295,6 +291,7 @@ footer h5 {
     font-weight: normal;
     font-size: 15px;
 }
+
 
 
 

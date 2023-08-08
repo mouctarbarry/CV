@@ -8,21 +8,21 @@
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="icon" href="src/images/cv.png" type="image/x-icon">
     <title>CV de Mouctar</title>
+    <script src="src/js/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body data-bs-spy="scroll" data-bs-target="#myNavbar">
 
-    <nav id="myNavbar" class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav id="myNavbar" class="navbar navbar-expand-lg navbar-dark sticky-top" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"></a>
+            <a class="nav-link active" aria-current="page" href="#about">Profil</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#about">Moi</a>
                     <a class="nav-link" href="#skills">Compétences</a>
-                    <a class="nav-link" href="#experience">Expérience</a>
+                    <a class="nav-link" href="#experience">Expériences</a>
                     <a class="nav-link" href="#education">Education</a>
                     <a class="nav-link" href="#portfolio">Portfolio</a>
                 </div>
@@ -35,9 +35,9 @@
             <img src="src/images/moii.jpg" alt="Photo de profile" class="rounded-circle">
         </div>
         <div class="heading">
-            <h1>Hello, I'm Mouctar</h1>
-            <h3>DevOps Engineer</h3>
-            <a href="src/docs#" class="btn btn-outline-dark">Download CV</a>
+            <h1><span id="aboutP" data-text="Hello, I'm Mouctar"></span></h1>
+            <h3 id = "aboutW" data-text= "DevOps Engineer"></h3>
+            <a href="src/docs#" class="btn btn-outline-success">Download CV</a>
         </div>
     </section>
 
