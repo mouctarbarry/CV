@@ -59,6 +59,7 @@ ul{
 .nav-link:hover {
     background-color: white;
     color: dimgray !important;
+    transition: all 0.3s ease-in 0s;
 }
 
 
@@ -327,7 +328,7 @@ h2 {
     font-size: 18px;
 }
 #contact-form input[type=submit] {
-    margin: 40px auto 0px;
+    margin: 40px auto 0;
     display: block;
 }
 .comments {
@@ -350,7 +351,7 @@ h2 {
     font-weight: bold;
     text-transform: uppercase;
     padding: 18px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: all 0.3s ease-in 0s;
 }
 .button1:hover {
