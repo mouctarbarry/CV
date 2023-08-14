@@ -249,10 +249,10 @@ ul{
     background-color: white;
 }
 #portfolio img {
-    width: 100%;
-    height: 100%;
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
+    width: 80%;
+    height: 80%;
+    /*filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);*/
 }
 #portfolio img:hover {
     filter: none;
@@ -292,6 +292,71 @@ footer h5 {
     font-size: 15px;
 }
 
+/* Contact */
+#contact {
+    font-family: 'Lato', sans-serif;
+    margin: 70px 0;
+    background: linear-gradient(to left, #333333, darkslategray) ;
+}
+.divider {
+    width:100px;
+    height: 2px;
+    background: #ffa500;
+    margin: 0 auto 20px;
+}
+.heading {
+    text-align: center;
+    padding-bottom: 40px;
+}
+h2 {
+    text-transform: uppercase;
+    font-weight:bold;
+    color: #fff;
+}
+#contact-form {
+    font-size: 20px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+}
+.blue {
+    color: #0069d6;
+}
+.form-control {
+    height: 50px;
+    font-size: 18px;
+}
+#contact-form input[type=submit] {
+    margin: 40px auto 0px;
+    display: block;
+}
+.comments {
+    font-style: italic;
+    font-size: 18px;
+    color: #d82c2e;
+    height: 25px
+}
+#contact-form .thank-you {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 22px;
+}
+.button1 {
+    border: 1px solid #ddd;
+    background: #ffa500;
+    color: #fff;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in 0s;
+}
+.button1:hover {
+    background: #333;
+    border-color: #ffa500;
+}
 
 
 
