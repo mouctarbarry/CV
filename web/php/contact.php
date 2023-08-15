@@ -1,5 +1,8 @@
 <?php
 
+require 'vendor/autoload.php'; // Chargement des dépendances
+
+use Mailgun\Mailgun;
 
 $array = array("firstname" => "", "name" => "", "email" => "", "phone" => "", "message" => "", "firstnameError" => "", "nameError" => "", "emailError" => "", "phoneError" => "", "messageError" => "", "isSuccess" => false);
 $emailTo = "bmouctar22@gmail.com";
@@ -49,8 +52,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if($array["isSuccess"]) {
-        $headers = "From: {$array['firstname']} {$array['name']} <{$array['email']}>\r\nReply-To: {$array['email']}";
-        mail($emailTo, "Un message de votre site", $emailText, $headers);
+        // Configuration de Mailgun
+        $mg = Mailgun::create('pubkey-954af1cd404d85f09871ed02b511f175');
+        $domain = 'sandbox8edd90ed4cd5466287332ede9c6ed43c.mailgun.org';
+
+        $params = array(
+            'from' => "{$array['firstname']} {$array['name']} <{$array['email']}>",
+            'to' => $emailTo,
+            'subject' => 'Un message de votre site',
+            'text' => $emailText
+        );
+
+        $mg->messages()->send($domain, $params);
     }
 
     echo json_encode($array);
@@ -59,10 +72,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function isEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
-function isPhone($phone) {
+
+function isPhone($phone): bool|int
+{
     return preg_match("/^[0-9 ]*$/",$phone);
 }
-function test_input($data) {
+
+function test_input($data): string
+{
     $data = trim($data);
     $data = stripslashes($data);
     return htmlspecialchars($data);
