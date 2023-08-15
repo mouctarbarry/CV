@@ -1,15 +1,5 @@
 {
-  "name": "mon-cv-dev",
-  "description": "Description de votre projet",
-  "type": "project",
-  "license": "MOOKI",
-  "authors": [
-    {
-      "name": "mouctar"
-    }
-  ],
   "require": {
-    "php": "^8.1",
-    "other/package": "^1.0"
+    "php": "^7.2.5"
   }
 }
