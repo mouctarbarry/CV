@@ -42,9 +42,17 @@ $(document).ready(function () {
 });
 
 
-function typeTextInLive(elementId, typingSpeed) {
+const aboutPText = "Hello, I'm Mouctar";
+const aboutWText = "DevOps Engineer";
+
+function typeTextInLive(elementId, text, typingSpeed) {
     const typingElement = document.getElementById(elementId);
-    const text = typingElement.getAttribute("data-text");
+
+    if (!typingElement) {
+        console.error(`Element with ID '${elementId}' not found.`);
+        return;
+    }
+
     let charIndex = 0;
 
     function typeText() {
@@ -58,5 +66,7 @@ function typeTextInLive(elementId, typingSpeed) {
     typeText();
 }
 
-typeTextInLive("aboutP", 50);
-typeTextInLive("aboutW", 50);
+document.addEventListener("DOMContentLoaded", function() {
+    typeTextInLive("aboutP", aboutPText, 50);
+    typeTextInLive("aboutW", aboutWText, 50);
+});
