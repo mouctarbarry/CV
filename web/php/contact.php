@@ -1,11 +1,5 @@
 <?php
 
-require 'vendor/autoload.php'; // Chargement des dépendances
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
 $array = array("firstname" => "", "name" => "", "email" => "", "phone" => "", "message" => "", "firstnameError" => "", "nameError" => "", "emailError" => "", "phoneError" => "", "messageError" => "", "isSuccess" => false);
 $emailTo = "bmouctar22@gmail.com";
 
@@ -53,45 +47,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailText .= "Message: {$array['message']}\n";
     }
 
-    if ($array["isSuccess"]) {
-        $mail = new PHPMailer(true);
-
-        try {
-            // Configuration SMTP
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'barrymouctaar@gmail.com';
-            $mail->Password   = 'PUPp@ssword1996';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port       = 465;
-
-            // Destinataires et contenu
-            $mail->setFrom('barrymouctaar@gmail.com', 'Mailer');
-            $mail->addAddress($emailTo);
-            $mail->Subject = 'Un message de votre site';
-            $mail->Body    = $emailText;
-
-            $mail->send();
-            echo json_encode($array);
-        } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
-    } else {
-        echo json_encode($array);
+    if($array["isSuccess"]) {
+        $headers = "From: {$array['firstname']} {$array['name']} <{$array['email']}>\r\nReply-To: {$array['email']}";
+        mail($emailTo, "Un message de votre site", $emailText, $headers);
     }
+
+    echo json_encode($array);
 }
 
 function isEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
-
 function isPhone($phone): bool|int
 {
     return preg_match("/^[0-9 ]*$/",$phone);
 }
-
 function test_input($data): string
 {
     $data = trim($data);
