@@ -17,8 +17,17 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.isSuccess) {
                     // Afficher un message de succès
-                    $('#contact-form').append("<p class='thank-you'>Votre message a bien été envoyé. Merci de m'avoir contacté :)</p>");
-                    $('#contact-form')[0].reset();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Succès',
+                        html: 'Votre message a bien été envoyé. <br> Merci de m\'avoir contacté &#128522;',
+                    }).then((result) => {
+                        // Réinitialiser le formulaire si l'utilisateur clique sur "OK"
+                        if (result.isConfirmed) {
+                            $('#contact-form')[0].reset();
+                        }
+                    });
+
                 } else {
                     // Afficher les messages d'erreur à côté des champs concernés
                     $('#firstname + .comments').html(response.firstnameError);
