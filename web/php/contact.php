@@ -2,7 +2,9 @@
 
 require 'vendor/autoload.php'; // Chargement des dépendances
 
-use Mailgun\Mailgun;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 $array = array("firstname" => "", "name" => "", "email" => "", "phone" => "", "message" => "", "firstnameError" => "", "nameError" => "", "emailError" => "", "phoneError" => "", "messageError" => "", "isSuccess" => false);
 $emailTo = "bmouctar22@gmail.com";
@@ -51,22 +53,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailText .= "Message: {$array['message']}\n";
     }
 
-    if($array["isSuccess"]) {
-        // Configuration de Mailgun
-        $mg = Mailgun::create('pubkey-954af1cd404d85f09871ed02b511f175');
-        $domain = 'sandbox8edd90ed4cd5466287332ede9c6ed43c.mailgun.org';
+    if ($array["isSuccess"]) {
+        $mail = new PHPMailer(true);
 
-        $params = array(
-            'from' => "{$array['firstname']} {$array['name']} <{$array['email']}>",
-            'to' => $emailTo,
-            'subject' => 'Un message de votre site',
-            'text' => $emailText
-        );
+        try {
+            // Configuration SMTP
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'barrymouctaar@gmail.com';
+            $mail->Password   = 'PUPp@ssword1996';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port       = 465;
 
-        $mg->messages()->send($domain, $params);
+            // Destinataires et contenu
+            $mail->setFrom('barrymouctaar@gmail.com', 'Mailer');
+            $mail->addAddress($emailTo);
+            $mail->Subject = 'Un message de votre site';
+            $mail->Body    = $emailText;
+
+            $mail->send();
+            echo json_encode($array);
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    } else {
+        echo json_encode($array);
     }
-
-    echo json_encode($array);
 }
 
 function isEmail($email) {

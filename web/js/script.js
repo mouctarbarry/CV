@@ -1,32 +1,36 @@
-$(function () {
-
-    $('#contact-form').submit(function(e) {
+$(document).ready(function () {
+    $('#contact-form').submit(function (e) {
         e.preventDefault();
-        $('.comments').empty();
-        const postdata = $('#contact-form').serialize();
 
+        // Effacer les messages d'erreur précédents
+        $('.comments').empty();
+
+        // Récupérer les données du formulaire
+        const formData = $(this).serialize();
+
+        // Envoyer les données au serveur via AJAX
         $.ajax({
             type: 'POST',
             url: 'php/contact.php',
-            data: postdata,
+            data: formData,
             dataType: 'json',
-            success: function(json) {
-
-                if(json.isSuccess) {
+            success: function (response) {
+                if (response.isSuccess) {
+                    // Afficher un message de succès
                     $('#contact-form').append("<p class='thank-you'>Votre message a bien été envoyé. Merci de m'avoir contacté :)</p>");
                     $('#contact-form')[0].reset();
                 } else {
-                    $('#firstname + .comments').html(json.firstnameError);
-                    $('#name + .comments').html(json.nameError);
-                    $('#email + .comments').html(json.emailError);
-                    $('#phone + .comments').html(json.phoneError);
-                    $('#message + .comments').html(json.messageError);
+                    // Afficher les messages d'erreur à côté des champs concernés
+                    $('#firstname + .comments').html(response.firstnameError);
+                    $('#name + .comments').html(response.nameError);
+                    $('#email + .comments').html(response.emailError);
+                    $('#phone + .comments').html(response.phoneError);
+                    $('#message + .comments').html(response.messageError);
                 }
             }
         });
     });
-
-})
+});
 
 
 function typeTextInLive(elementId, typingSpeed) {
