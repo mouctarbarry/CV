@@ -9,7 +9,7 @@ mes expériences professionnelles et mes projets(portefolio).
 
 ## Aperçu du CV
 
-[Télécharger le format PDF](docs/#)
+[Télécharger le format PDF](web/docs/#)
 
 ## Comment utiliser
 
