@@ -63,10 +63,13 @@ function typeTextInLive(elementId, text, typingSpeed) {
         }
     }
 
-    typeText();
+    return new Promise(resolve => {
+        typeText();
+        setTimeout(resolve, text.length * typingSpeed);
+    });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    typeTextInLive("aboutP", aboutPText, 50);
-    typeTextInLive("aboutW", aboutWText, 50);
+document.addEventListener("DOMContentLoaded", async function() {
+    await typeTextInLive("aboutP", aboutPText, 30);
+    await typeTextInLive("aboutW", aboutWText, 50);
 });
