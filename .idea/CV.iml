@@ -5,10 +5,11 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sweetalert2" level="application" />
-    <orderEntry type="library" name="jquery-3.7.0" level="application" />
+    <orderEntry type="library" name="sweetalert2" level="application" />
   </component>
 </module>

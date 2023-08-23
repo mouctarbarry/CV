@@ -1,43 +1,70 @@
-$(document).ready(function () {
-    $('#contact-form').submit(function (e) {
-        e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Empêche l'envoi du formulaire par défaut
 
-        // Effacer les messages d'erreur précédents
-        $('.comments').empty();
+        const comments = form.querySelectorAll(".comments");
+        comments.forEach(comment => comment.textContent = "");
 
-        // Récupérer les données du formulaire
-        const formData = $(this).serialize();
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
 
-        // Envoyer les données au serveur via AJAX
-        $.ajax({
-            type: 'POST',
-            url: 'php/contact.php',
-            data: formData,
-            dataType: 'json',
-            success: function (response) {
-                if (response.isSuccess) {
-                    // Afficher un message de succès
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Succès',
-                        html: 'Votre message a bien été envoyé. <br> Merci de m\'avoir contacté &#128522;',
-                    }).then((result) => {
-                        // Réinitialiser le formulaire si l'utilisateur clique sur "OK"
-                        if (result.isConfirmed) {
-                            $('#contact-form')[0].reset();
-                        }
-                    });
-
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log(xhr.status);
+                    console.log(xhr.responseText);
+                    // Succès : le script Python a été exécuté
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Message envoyé",
+                            text: "Merci de m'avoir contacté, je vous répondrai dès que possible",
+                        });
+                        form.reset(); // Réinitialiser le formulaire
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Erreur",
+                            text: "Une erreur est survenue lors de l'envoi du message.",
+                        });
+                    }
                 } else {
-                    // Afficher les messages d'erreur à côté des champs concernés
-                    $('#firstname + .comments').html(response.firstnameError);
-                    $('#name + .comments').html(response.nameError);
-                    $('#email + .comments').html(response.emailError);
-                    $('#phone + .comments').html(response.phoneError);
-                    $('#message + .comments').html(response.messageError);
+                    // Erreur HTTP lors de l'exécution du script Python
+                    Swal.fire({
+                        icon: "error",
+                        title: "Erreur",
+                        text: "Une erreur est survenue lors de l'envoi du message.",
+                    });
                 }
             }
-        });
+        };
+
+        let isValid = true;
+
+        if (formData.get('firstname').trim() === "") {
+            form.querySelector("#firstname + .comments").textContent = "J'aimerais connaître votre prénom.";
+            return;
+        }
+        if (formData.get('name').trim() === "") {
+            form.querySelector("#name + .comments").textContent = "Même le nom svp :)";
+            return;
+        }
+        if (formData.get('email').trim() === "") {
+            form.querySelector("#email + .comments").textContent = "Un mail pour vous répondre";
+            return;
+        }
+        if (formData.get('message').trim() === "") {
+            form.querySelector("#message + .comments").textContent = "Un petit message pour moi ?";
+            return;
+        }
+
+       if (isValid) {
+           xhr.open("POST", "python/contact.py", true);
+           xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+           xhr.send(formData);
+        }
     });
 });
 

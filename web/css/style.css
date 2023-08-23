@@ -63,10 +63,17 @@ ul{
 }
 
 
-/* ABOUT To be continued */
+/* ABOUT To be continued
 #about{
-    background: radial-gradient(#333333, darkslategray) ;
+    background: linear-gradient(161deg,rgba(255,49,140,.5),rgba(255,49,140,0)),#5233cc;
 }
+*/
+#about{
+    background: linear-gradient(-45deg, purple, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
 .profile-picture{
     text-align: center;
     margin: 0 auto 30px;
@@ -109,8 +116,11 @@ ul{
 
 /* EXPERIENCE */
 #experience{
-    background: linear-gradient(to left, #333333, darkslategray) ;
+    background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
+
 #experience .heading h2{
     color: white;
 }
@@ -203,7 +213,9 @@ ul{
 }
 
 /* EDUCATION */
-
+#education .heading h2{
+    color: black;
+}
 #education{
     background-color: azure;
 }
@@ -240,7 +252,9 @@ ul{
 
 /* PORTFOLIO */
 #portfolio{
-    background: linear-gradient(to left, #333333, darkslategray) ;
+    background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
 
 #portfolio .heading h2 {
@@ -252,8 +266,6 @@ ul{
 #portfolio img {
     width: 80%;
     height: 80%;
-    /*filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);*/
 }
 #portfolio img:hover {
     filter: none;
@@ -295,9 +307,9 @@ footer h5 {
 
 /* Contact */
 #contact {
-    font-family: 'Lato', sans-serif;
-    margin: 70px 0;
-    background: linear-gradient(to left, #333333, darkslategray) ;
+    background: linear-gradient(-45deg, darkorange, purple, #333333, #bc95ff);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
 .divider {
     width:100px;
@@ -357,6 +369,19 @@ h2 {
 .button1:hover {
     background: #333;
     border-color: #ffa500;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }
 
 
