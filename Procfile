@@ -1,1 +1,1 @@
-web: python contact.py
+web: python server.py
