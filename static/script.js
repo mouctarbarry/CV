@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    console.log(xhr.status);
-                    console.log(xhr.responseText);
                     // Succès : le script Python a été exécuté
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
@@ -26,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     } else {
                         Swal.fire({
                             icon: "error",
-                            title: "Erreur",
+                            title: "Script Python exécuté mais erreur",
                             text: "Une erreur est survenue lors de l'envoi du message.",
                         });
                     }
@@ -34,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Erreur HTTP lors de l'exécution du script Python
                     Swal.fire({
                         icon: "error",
-                        title: "Erreur",
+                        title: "Erreur HTTP",
                         text: "Une erreur est survenue lors de l'envoi du message.",
                     });
                 }
@@ -61,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
        if (isValid) {
-           xhr.open("POST", "python/contact.py", true);
+           xhr.open("POST", "../../contact.py", true);
            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
            xhr.send(formData);
         }
