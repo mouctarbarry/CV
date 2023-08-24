@@ -1,4 +1,3 @@
-#!C:\xampp\htdocs\CV\venv\Scripts\python.exe
 import cgi
 import json
 import smtplib
