@@ -11,7 +11,11 @@ class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 
 httpd = socketserver.TCPServer(("", PORT), MyRequestHandler)
-httpd.socket = ssl.wrap_socket(httpd.socket, keyfile="server.key", certfile="server.crt", server_side=True)
+
+context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+context.load_cert_chain(certfile="server.crt", keyfile="server.key")
+
+httpd.socket = context.wrap_socket(httpd.socket, server_side=True)
 
 print(f"Serving at port {PORT}")
 httpd.serve_forever()
