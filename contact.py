@@ -8,10 +8,10 @@ def send_email(subject, message):
     # Remplacez ces valeurs par vos propres informations SMTP
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_username = 'barrymouctaar@gmail.com'
-    smtp_password = 'wkhrlnvwwkbelnen'
-    sender_email = 'barrymouctaar@gmail.com'
-    recipient_email = 'bmouctar22@gmail.com'
+    smtp_username = 'moi@gmail.com'
+    smtp_password = 'monPass'
+    sender_email = 'moi@gmail.com'
+    recipient_email = 'moi@gmail.com'
 
     try:
         # Création du message MIME
