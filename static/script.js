@@ -12,29 +12,41 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Succès : le script Python a été exécuté
+                    // Success: the Python script was executed
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                        Swal.fire({
-                            icon: "success",
-                            title: "Message envoyé",
-                            text: "Merci de m'avoir contacté, je vous répondrai dès que possible",
-                        });
-                        form.reset(); // Réinitialiser le formulaire
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Message envoyé",
+                                text: "Merci de m'avoir contacté, je vous répondrai dès que possible",
+                            });
+                        } else {
+                            alert("Message envoyé avec succès! Merci de m'avoir contacté, je vous répondrai dès que possible.");
+                        }
+                        form.reset(); // Reset the form
                     } else {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Script Python exécuté mais erreur",
-                            text: "Une erreur est survenue lors de l'envoi du message.",
-                        });
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Script Python exécuté mais erreur",
+                                text: "Une erreur est survenue lors de l'envoi du message.",
+                            });
+                        } else {
+                            alert("Une erreur est survenue lors de l'envoi du message.");
+                        }
                     }
                 } else {
-                    // Erreur HTTP lors de l'exécution du script Python
-                    Swal.fire({
-                        icon: "error",
-                        title: "Erreur HTTP",
-                        text: "Une erreur est survenue lors de l'envoi du message.",
-                    });
+                    // HTTP error when executing Python script
+                    if (typeof Swal !== 'undefined') {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Erreur HTTP",
+                            text: "Une erreur est survenue lors de l'envoi du message.",
+                        });
+                    } else {
+                        alert("Une erreur est survenue lors de l'envoi du message.");
+                    }
                 }
             }
         };
@@ -59,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
        if (isValid) {
-           xhr.open("POST", "../../contact.py", true);
+           xhr.open("POST", "/contact", true);
            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
            xhr.send(formData);
         }
